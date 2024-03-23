@@ -6,9 +6,9 @@ import webapp.crud_escola.Model.VerificaCadastroAdm;
 
 public interface VerificaCadastroAdmRepository extends CrudRepository <VerificaCadastroAdm, String> {
 
-    VerificaCadastroAdm findByndCpf (String cpf);
+    VerificaCadastroAdm findByCpf (String cpf);
 
-    VerificaCadastroAdm findByndNome (String nome);
+    VerificaCadastroAdm findByNome (String nome);
 
     
 

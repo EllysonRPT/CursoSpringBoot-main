@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CrudEscolaApplication<crud_escola>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "webapp.crud_escola.CrudEscolaApplication",
+            "projectName": "crud_escola",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
