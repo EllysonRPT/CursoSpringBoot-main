@@ -3,7 +3,6 @@ package webapp.crud_escola.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import webapp.crud_escola.Model.Administrador;
 import webapp.crud_escola.Repository.AdministradorRepository;
@@ -19,7 +18,7 @@ public class AdministradorController {
     @Autowired
     private VerificaCadastroAdmRepository vcar;
 
-    @PostMapping("/cad-adm")
+    @PostMapping("cadastro-adm")
     public String postCadAdm (Administrador adm) {
         String cpfVerificar = vcar.findByCpf(adm.getCpf()).getCpf();
         if (cpfVerificar .equals( adm.getCpf())) {
