@@ -1,10 +1,10 @@
-package webapp.crud_escola;
+package webapp.escola_completo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrudEscolaApplicationTests {
+class EscolaCompletoApplicationTests {
 
 	@Test
 	void contextLoads() {

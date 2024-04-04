@@ -1,10 +1,9 @@
-package webapp.crud_escola.Repository;
+package webapp.escola_completo.Repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import webapp.crud_escola.Model.Administrador;
-
-
+import webapp.escola_completo.Model.Administrador;
+import java.util.List;
 
 
 public interface AdministradorRepository extends CrudRepository<Administrador, String>{

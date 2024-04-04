@@ -1,4 +1,4 @@
-package webapp.crud_escola.Controller;
+package webapp.escola_completo.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,4 +32,3 @@ public class IndexController {
     
     
 }
-
