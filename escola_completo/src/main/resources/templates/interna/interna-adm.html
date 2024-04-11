@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola XYZ - Login ADM</title>
+    <!-- Importações de estilos e scripts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style-login.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <div class="container">
+        <!-- Inclusão do fragmento do cabeçalho -->
+        <div th:insert="~{fragmentos/header :: header}"><!-- barra de menu --></div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="login-container">
+                    <!-- Exibição de mensagem de sucesso ou erro -->
+                    <span th:class="${classe}" th:text="${msg}"></span>
+                    <!-- Formulário para enviar solicitação de logout -->
+                    <form th:action="@{/logout-adm}" method="post">
+                        <!-- Botão de logout -->
+                        <button type="submit" class="btn btn-block btn-logout"><i class="fas fa-sign-in-alt"></i> SAIR</button>
+                    </form>
+                    <!-- Formulário de cadastro de alunos -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h5>Cadastro de Aluno</h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="/cadastrar-aluno" method="post">
+                                <!-- Campos do formulário de cadastro de alunos -->
+                                <div class="mb-3">
+                                    <label for="nome-aluno" class="form-label">Nome:</label>
+                                    <input type="text" class="form-control" id="nome-aluno" name="nome-aluno">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email-aluno" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email-aluno" name="email-aluno">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ra-aluno" class="form-label">RA:</label>
+                                    <input type="text" class="form-control" id="ra-aluno" name="ra-aluno">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="senha-aluno" class="form-label">Senha:</label>
+                                    <input type="password" class="form-control" id="senha-aluno" name="senha-aluno">
+                                </div>
+                                <!-- Botão de cadastro de aluno -->
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Formulário de cadastro de professores -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h5>Cadastro de Professor</h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="/cadastrar-professor" method="post">
+                                <!-- Campos do formulário de cadastro de professores -->
+                                <div class="mb-3">
+                                    <label for="nome-professor" class="form-label">Nome:</label>
+                                    <input type="text" class="form-control" id="nome-professor" name="nome-professor">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cpf-professor" class="form-label">CPF:</label>
+                                    <input type="text" class="form-control" id="cpf-professor" name="cpf-professor">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email-professor" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email-professor" name="email-professor">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="materia-professor" class="form-label">Matéria:</label>
+                                    <input type="text" class="form-control" id="materia-professor" name="materia-professor">
+                                </div>
+                                <!-- Botão de cadastro de professor -->
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
