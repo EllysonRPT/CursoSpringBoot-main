@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
+
 @Controller
 public class IndexController {
     //classe para criação das rotas de navegação
@@ -26,7 +27,12 @@ public class IndexController {
     public String acessoCadastroAdm() {
         return "cadastro/cadastro-adm";
     }
+    @GetMapping("/cadastrar-aluno")
+    public String acessoCadastroAluno() {
+        return "interna/interna-adm";
+    }
     
+
     
     
     
