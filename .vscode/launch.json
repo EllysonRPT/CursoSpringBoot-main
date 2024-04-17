@@ -4,6 +4,13 @@
             "type": "java",
             "name": "EscolaCompletoApplication",
             "request": "launch",
+            "mainClass": "webapp.escola_completo.EscolaCompletoApplication",
+            "projectName": "escola_completo"
+        },
+        {
+            "type": "java",
+            "name": "EscolaCompletoApplication",
+            "request": "launch",
             "mainClass": "webapp.crud_escola.EscolaCompletoApplication",
             "projectName": "crud_escola"
         },
