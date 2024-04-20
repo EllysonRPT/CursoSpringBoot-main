@@ -61,7 +61,7 @@
                             <h5>Cadastro de Professor</h5>
                         </div>
                         <div class="card-body">
-                            <form action="/cadastrarProfessor" method="post">
+                            <form action="/cadastrar-Professor" method="post">
                                 <!-- Campos do formulário de cadastro de professores -->
                                 <div class="mb-3">
                                     <label for="nomeProfessor" class="form-label">Nome:</label>
@@ -79,9 +79,14 @@
                                     <label for="materiaProfessor" class="form-label">Matéria:</label>
                                     <input type="text" class="form-control" id="materiaProfessor" name="materiaProfessor">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="senhaProfessor" class="form-label">Senha:</label>
+                                    <input type="password" class="form-control" id="senhaProfessor" name="senhaProfessor">
+                                </div>
                                 <!-- Botão de cadastro de professor -->
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                             </form>
+                            
                         </div>
                     </div>
                 </div>

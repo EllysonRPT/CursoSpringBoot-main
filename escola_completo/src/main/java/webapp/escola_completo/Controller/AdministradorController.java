@@ -8,8 +8,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import webapp.escola_completo.Model.Administrador;
 import webapp.escola_completo.Model.Aluno;
+import webapp.escola_completo.Model.Professor;
 import webapp.escola_completo.Repository.AdministradorRepository;
 import webapp.escola_completo.Repository.AlunoRepository;
+import webapp.escola_completo.Repository.ProfessorRepository;
 import webapp.escola_completo.Repository.VerificaCadastroAdmRepository;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,51 +30,85 @@ public class AdministradorController {
     @Autowired
     private AlunoRepository alunoRepository;
 
+    @Autowired
+    private ProfessorRepository professorRepository;
+
     // métodos
 
     // Método para cadastrar um aluno no banco de dados
-@PostMapping("cadastrar-aluno")
-public ModelAndView cadastroAluno(Aluno aluno, RedirectAttributes attributes) {
-    // Cria um objeto ModelAndView para redirecionar para a página de login de aluno
-    ModelAndView mv = new ModelAndView("redirect:/interna-adm");
+    @PostMapping("cadastrar-aluno")
+    public ModelAndView cadastroAluno(Aluno aluno, RedirectAttributes attributes) {
+        // Cria um objeto ModelAndView para redirecionar para a página de login de aluno
+        ModelAndView mv = new ModelAndView("redirect:/interna-adm");
 
-    // Tenta salvar o aluno no banco de dados
-    try {
-        // Aqui você deve ter um repositório adequado para Aluno, similar ao AdministradorRepository
-        alunoRepository.save(aluno); // Salva o aluno no banco de dados
+        // Tenta salvar o aluno no banco de dados
+        try {
+            // Aqui você deve ter um repositório adequado para Aluno, similar ao
+            // AdministradorRepository
+            alunoRepository.save(aluno); // Salva o aluno no banco de dados
 
-        // Adiciona uma mensagem de sucesso aos atributos de redirecionamento
-        String mensagem = "Cadastro de aluno realizado com sucesso";
-        System.out.println(mensagem);
-        attributes.addFlashAttribute("msg", mensagem);
-        attributes.addFlashAttribute("classe", "vermelho");
-    } catch (Exception e) {
-        // Em caso de erro, adiciona uma mensagem de erro aos atributos de redirecionamento
-        String mensagem = "Erro ao cadastrar aluno: " + e.getMessage();
-        System.out.println(mensagem);
-        attributes.addFlashAttribute("msg", mensagem);
-        attributes.addFlashAttribute("classe", "vermelho");
+            // Adiciona uma mensagem de sucesso aos atributos de redirecionamento
+            String mensagem = "Cadastro de aluno realizado com sucesso";
+            System.out.println(mensagem);
+            attributes.addFlashAttribute("msg", mensagem);
+            attributes.addFlashAttribute("classe", "vermelho");
+        } catch (Exception e) {
+            // Em caso de erro, adiciona uma mensagem de erro aos atributos de
+            // redirecionamento
+            String mensagem = "Erro ao cadastrar aluno: " + e.getMessage();
+            System.out.println(mensagem);
+            attributes.addFlashAttribute("msg", mensagem);
+            attributes.addFlashAttribute("classe", "vermelho");
+        }
+
+        // Retorna o ModelAndView para redirecionar para a página de login de aluno
+        return mv;
     }
 
-    // Retorna o ModelAndView para redirecionar para a página de login de aluno
-    return mv;
-}
+    @PostMapping("cadastrar-professor")
+    public ModelAndView cadastroProfessor(Professor professor, RedirectAttributes attributes) {
+        // Cria um objeto ModelAndView para redirecionar para a página interna do
+        // administrador
+        ModelAndView mv = new ModelAndView("redirect:/interna-adm");
 
+        try {
+            // Salva o professor no banco de dados
+            professorRepository.save(professor);
+
+            // Adiciona uma mensagem de sucesso aos atributos de redirecionamento
+            String mensagem = "Cadastro de professor realizado com sucesso";
+            System.out.println(mensagem);
+            attributes.addFlashAttribute("msg", mensagem);
+            attributes.addFlashAttribute("classe", "vermelho");
+        } catch (Exception e) {
+            // Em caso de erro, adiciona uma mensagem de erro aos atributos de
+            // redirecionamento
+            String mensagem = "Erro ao cadastrar professor: " + e.getMessage();
+            System.out.println(mensagem);
+            attributes.addFlashAttribute("msg", mensagem);
+            attributes.addFlashAttribute("classe", "vermelho");
+        }
+
+        // Retorna o ModelAndView para redirecionar para a página interna do
+        // administrador
+        return mv;
+    }
 
     // Método para cadastrar um administrador no banco de dados
     @PostMapping("cadastrar-adm")
     public ModelAndView cadastroAdmBD(Administrador adm, RedirectAttributes attributes) {
         // Verifica se o CPF do administrador já existe no banco de dados
         boolean verificaCpf = vcar.existsById(adm.getCpf());
-    
-        // Cria um objeto ModelAndView para redirecionar para a página de login de administrador
+
+        // Cria um objeto ModelAndView para redirecionar para a página de login de
+        // administrador
         ModelAndView mv = new ModelAndView("redirect:/login-adm");
-    
+
         // Se o CPF não existe, realiza o cadastro do administrador
         if (!verificaCpf) {
             // Salva o administrador no banco de dados
             ar.save(adm);
-            
+
             // Adiciona uma mensagem de sucesso aos atributos de redirecionamento
             String mensagem = "Cadastro Realizado com sucesso";
             System.out.println(mensagem);
@@ -85,11 +121,11 @@ public ModelAndView cadastroAluno(Aluno aluno, RedirectAttributes attributes) {
             attributes.addFlashAttribute("msg", mensagem);
             attributes.addFlashAttribute("classe", "vermelho");
         }
-    
-        // Retorna o ModelAndView para redirecionar para a página de login de administrador
+
+        // Retorna o ModelAndView para redirecionar para a página de login de
+        // administrador
         return mv;
     }
-    
 
     // Método para realizar o login do administrador
     @PostMapping("acesso-adm")
@@ -98,11 +134,13 @@ public ModelAndView cadastroAluno(Aluno aluno, RedirectAttributes attributes) {
         ModelAndView mv = new ModelAndView("redirect:/interna-adm"); // Página interna de acesso
 
         try {
-            // Verifica se o CPF e a senha correspondem a um administrador registrado no banco de dados
+            // Verifica se o CPF e a senha correspondem a um administrador registrado no
+            // banco de dados
             boolean acessoCPF = ar.existsById(cpf); // Verifica se o CPF existe no banco de dados
             boolean acessoSenha = senha.equals(ar.findByCpf(cpf).getSenha()); // Verifica se a senha está correta
 
-            // Se o CPF e a senha estiverem corretos, permite o acesso interno do administrador
+            // Se o CPF e a senha estiverem corretos, permite o acesso interno do
+            // administrador
             if (acessoCPF && acessoSenha) {
                 acessoInternoAdm = true;
             } else {
