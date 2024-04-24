@@ -4,9 +4,7 @@ import webapp.escola_completo.Model.Professor;
 
 public interface ProfessorRepository extends CrudRepository<Professor, String> {
 
-    // Aluno fingBySenhaAluno(String senhaAluno);
-    // Aluno findByEmailAluno (String emailAluno);
-    // Aluno findByNome (String nomeAluno);
-    // Aluno findByRaAluno (String raAluno);
+    //  Professor fingBySenhaProfessor(String senhaProfessor);
+    //  Professor findByCProfessor (String cpfProfessor);
     
 }

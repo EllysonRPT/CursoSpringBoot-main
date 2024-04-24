@@ -65,7 +65,7 @@ public class AdministradorController {
         return mv;
     }
 
-    @PostMapping("cadastrar-professor")
+    @PostMapping("cadastrar-Professor")
     public ModelAndView cadastroProfessor(Professor professor, RedirectAttributes attributes) {
         // Cria um objeto ModelAndView para redirecionar para a página interna do
         // administrador
@@ -83,7 +83,7 @@ public class AdministradorController {
         } catch (Exception e) {
             // Em caso de erro, adiciona uma mensagem de erro aos atributos de
             // redirecionamento
-            String mensagem = "Erro ao cadastrar professor: " + e.getMessage();
+            String mensagem = "Erro ao cadastrar professor: ";
             System.out.println(mensagem);
             attributes.addFlashAttribute("msg", mensagem);
             attributes.addFlashAttribute("classe", "vermelho");
@@ -95,7 +95,7 @@ public class AdministradorController {
     }
 
     // Método para cadastrar um administrador no banco de dados
-    @PostMapping("cadastrar-adm")
+    @PostMapping("cadastro-adm")
     public ModelAndView cadastroAdmBD(Administrador adm, RedirectAttributes attributes) {
         // Verifica se o CPF do administrador já existe no banco de dados
         boolean verificaCpf = vcar.existsById(adm.getCpf());
@@ -126,6 +126,37 @@ public class AdministradorController {
         // administrador
         return mv;
     }
+
+    @PostMapping("/acesso-aluno")
+public ModelAndView acessoAlunoLogin(@RequestParam String raAluno, @RequestParam String senhaAluno, RedirectAttributes attributes) {
+    ModelAndView mv = new ModelAndView("redirect:/home"); // Página inicial após o login do aluno
+
+    try {
+        // Verifica se o RA do aluno e a senha correspondem a um aluno registrado no banco de dados
+        boolean acessoRA = alunoRepository.existsById(raAluno); // Verifica se o RA existe no banco de dados
+        boolean acessoSenha = senhaAluno.equals(alunoRepository.findByRa(senhaAluno).getSenha()); // Verifica se a senha está correta
+
+        // Se o RA e a senha estiverem corretos, permite o acesso interno do aluno
+        if (acessoRA && acessoSenha) {
+            // Lógica para permitir acesso interno do aluno, se necessário
+        } else {
+            String mensagem = "RA ou senha inválidos";
+            System.out.println(mensagem);
+            attributes.addFlashAttribute("msg", mensagem);
+            attributes.addFlashAttribute("classe", "vermelho");
+            mv.setViewName("redirect:/login-aluno");
+        }
+        return mv;
+    } catch (Exception e) {
+        String mensagem = "Erro ao processar o login do aluno";
+        System.out.println(mensagem);
+        attributes.addFlashAttribute("msg", mensagem);
+        attributes.addFlashAttribute("classe", "vermelho");
+        mv.setViewName("redirect:/login-aluno");
+        return mv;
+    }
+}
+
 
     // Método para realizar o login do administrador
     @PostMapping("acesso-adm")

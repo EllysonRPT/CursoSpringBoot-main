@@ -3,11 +3,6 @@ package webapp.escola_completo.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
-
-
 
 @Controller
 public class IndexController {
@@ -22,14 +17,17 @@ public class IndexController {
     public String acessoHomePage2() {
         return "index";
     }
+
     @GetMapping("/login-adm")
     public String acessoLoginAdm() {
         return "login/login-adm";
     }
+
     @GetMapping("/cadastro-adm")
     public String acessoCadastroAdm() {
         return "cadastro/cadastro-adm";
     }
+
     @GetMapping("/cadastrar-aluno")
     public String acessoCadastroAluno() {
         return "interna/cadastrar-aluno";
@@ -39,6 +37,7 @@ public class IndexController {
     public String acessoCadastroProfessor() {
         return "interna/cadastrar-professor";
     }
+
     @GetMapping("/login-aluno")
     public String acessoLoginAluno() {
         return "login/login-aluno";
