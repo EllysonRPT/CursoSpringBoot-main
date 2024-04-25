@@ -9,9 +9,9 @@ import jakarta.persistence.Id;
 public class Aluno implements Serializable {
     
     @Id
+    private String raAluno;
     private String nomeAluno;
     private String emailAluno;
-    private String raAluno;
     private String senhaAluno;
 
     public String getNomeAluno() {
@@ -37,6 +37,10 @@ public class Aluno implements Serializable {
     }
     public void setSenhaAluno(String senhaAluno) {
         this.senhaAluno = senhaAluno;
+    }
+    public Object getsenhaProfessor() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getsenhaProfessor'");
     }
 
 }

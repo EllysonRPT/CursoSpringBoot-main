@@ -9,8 +9,8 @@ import jakarta.persistence.Id;
 public class Professor implements Serializable{
 
     @Id
-    private String nomeProfessor;
     private String cpfProfessor;
+    private String nomeProfessor;
     private String emailProfessor;
     private String materiaProfessor;
     private String senhaProfessor;
