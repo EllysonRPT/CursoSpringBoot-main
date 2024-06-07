@@ -1,5 +1,6 @@
 {
     "configurations": [
+        
         {
             "type": "java",
             "name": "EscolaCompletoApplication",
@@ -21,6 +22,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "webapp.crud_escola.CrudEscolaApplication",
             "projectName": "crud_escola",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApirestSenaiApplication<apirest_senai>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.du.apirest_senai.ApirestSenaiApplication",
+            "projectName": "apirest_senai",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
