@@ -13,42 +13,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/ativoPatrimonial")
 public class AtivoController {
     
     @Autowired
     AtivoPatrimonialRepository repository;
 
-    @GetMapping()
+    @GetMapping("/ativos")
     public List<AtivoPatrimonial> getAtivoPatrimonial () {
         return (List<AtivoPatrimonial>) repository.findAll();
     }
     
-    @PostMapping()
-    public AtivoPatrimonial postAtivoPatrimonial(@RequestBody AtivoPatrimonial ativoPatrimonial) {
-        return repository.save(ativoPatrimonial);     
+    @PostMapping("/ativos")
+    public ModelAndView postAtivoPatrimonial(@RequestBody AtivoPatrimonial ativoPatrimonial) {
+        repository.save(ativoPatrimonial);  
+        return new ModelAndView("redirect:/interna_responsavel");   
     }
     
-    @GetMapping("/{id}")
-    public Optional <AtivoPatrimonial> getAtivoPatrimonialById(@PathVariable Long id) {
+    @GetMapping("/ativos/{id}")
+    public Optional<AtivoPatrimonial> getAtivoPatrimonialById(@PathVariable Long id) {
         return repository.findById(id);
     }
     
-    @PutMapping("/{id}")
-    public AtivoPatrimonial putAtivoPatrimonial(  @PathVariable Long id, 
-                                        @RequestBody AtivoPatrimonial ativoPatrimonial) {
+    @PutMapping("/ativos/{id}")
+    public AtivoPatrimonial putAtivoPatrimonial(@PathVariable Long id, @RequestBody AtivoPatrimonial ativoPatrimonial) {
         Optional<AtivoPatrimonial> busca = repository.findById(id);
-        if(!busca.isEmpty()){
+        if(busca.isPresent()){
             ativoPatrimonial.setId(id);
             return repository.save(ativoPatrimonial);
-        }else{
+        } else {
             return null;
         }
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ativos/{id}")
     public void deleteAtivoPatrimonial(@PathVariable Long id){
         repository.deleteById(id);
     }
