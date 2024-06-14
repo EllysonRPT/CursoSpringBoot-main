@@ -10,9 +10,9 @@
 <body>
     <div th:insert="~{fragmentos/header :: header}"></div>
     <h2><div class="mensagem"><span th:text="${msg}" th:class="${cor}"></span></div></h2>
-    <div class="container-fluid"> <!-- Usando container-fluid para ocupar toda a largura -->
-        <div class="row justify-content-center align-items-center" style="height: 100vh;"> <!-- Definindo altura para 100vh -->
-            <div class="col-md-6 vertical-bar">
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 vertical-bar"> <!-- Adicionando classe vertical-bar -->
                 <h1 class="mb-4">Login</h1>
                 <form action="/home" method="post">
                     <div class="form-group">
