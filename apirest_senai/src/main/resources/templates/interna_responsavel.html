@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Ativo Patrimonial</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/interna.css}">
 </head>
 <body>
     <div th:insert="~{fragmentos/header :: header}"><!-- barra de menu --></div>
     <div class="container">
         <h1 class="mt-5">Registrar Ativo Patrimonial</h1>
-        <form action="/ativos" method="post" class="mt-4">
+        <form action="/ativoPatrimonial" method="post" class="mt-4">
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required>
@@ -20,26 +20,10 @@
                 <label for="id_ambiente">ID do Ambiente:</label>
                 <input type="number" class="form-control" name="id_ambiente" id="id_ambiente" placeholder="ID do Ambiente" required>
             </div>
-            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="submit" class="btn btn-danger">Registrar</button>
         </form>
 
-        <h2 class="mt-5">Ativos Patrimoniais Registrados</h2>
-        <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Ambiente</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="ativoPatrimonial : ${ativosPatrimoniais}">
-                    <td th:text="${ativoPatrimonial.id}"></td>
-                    <td th:text="${ativoPatrimonial.nome}"></td>
-                    <td th:text="${ativoPatrimonial.ambiente.nome}"></td>
-                </tr>
-            </tbody>
-        </table>
+        
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

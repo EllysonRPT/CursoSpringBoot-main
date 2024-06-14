@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
     background-image: url("https://static.portaldaindustria.com.br/portaldaindustria/noticias/media/imagem_plugin/alunocursotecnicosenai.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
     padding: 0;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    
 }
 
 header {
@@ -21,3 +28,11 @@ header {
     padding: 20px; /* Espaçamento interno */
     border-radius: 5%;
 }
+
+
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+
+  
